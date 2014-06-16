@@ -1063,6 +1063,9 @@
                 }],
                 link: function(scope, element, attrs){
                     scope.$watch('width + height', function() { updateDimensions(scope,attrs,element,scope.chart); });
+                    scope.$watch('forcey', function(forcey) {
+                        if (scope.chart) { scope.chart.forceY(scope.$eval( forcey )); }
+                    });
                     scope.$watch('data', function(data){
                         if(data){
                             //if the chart exists on the scope, do not call addGraph again, update data and call the chart.
